@@ -8,6 +8,7 @@ class Validate:
         return user_input
     
     def validateInteger(self, user_input):
+        # Check if float too
         if "." in user_input:
             return False
         if not user_input.isnumeric():
@@ -16,12 +17,14 @@ class Validate:
 
     def validateDateFormat(self, user_input):
         try:
+            # Throw error if wrong date format
             datetime.strptime(user_input, "%m-%d-%Y")
         except ValueError:
             return False
 
     def validateTimeFormat(self, user_input):
         try:
+            # Throw error if wrong time format
             datetime.strptime(user_input, "%I:%M %p")
         except ValueError:
             return False

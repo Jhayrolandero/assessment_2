@@ -21,31 +21,7 @@ class ReservationOption(Reservation):
             case "a":
                 self.tabulateView(self.getReservation(), "list")
             case "b":
-                try:
-                    self.setName(input("Enter Name: ").strip())
-                    self.setDate(input("Enter Date(mm-dd-yyyy): ").strip())
-                    self.setTime(input("Enter Time: ").strip())
-                    self.setNumAdults(input("Enter number of adults: ").strip())
-                    self.setNumChild(input("Enter number of children: ").strip())
-                    self.addReservation()
-                except Exception as e:
-                    if str(e) == "NoValue":
-                        print("Error: No value provided!")
-                    elif str(e) == "Zero":
-                        print("Error: Value cannot be zero or less!")
-                    elif str(e) == "NonInteger":
-                        print("Error: Value must be an integer!")
-                    elif str(e) == "DateError":
-                        print("Error: Invalid date format")
-                    elif str(e) == "InvalidTime":
-                        print("Error: Invalid time format")
-                    elif str(e) == "Negative":
-                        print("Error: Value is less than zero")
-                    elif str(e) == "SpecialChar":
-                        print("Error: Special character is invalid")
-                    else:
-                        print(f"An unexpected error occurred: {e}")
-                    return
+                self.userPrompt()
             case "c":
                 self.deleteOption(input("Enter the number of reservation to delete: "))
             case "d":
@@ -56,7 +32,34 @@ class ReservationOption(Reservation):
                 sys.exit()
             case _:
                 print("No Option")
-            
+                
+    def userPrompt(self):
+        try:
+            self.setName(input("Enter Name: ").strip())
+            self.setDate(input("Enter Date(mm-dd-yyyy): ").strip())
+            self.setTime(input("Enter Time: ").strip())
+            self.setNumAdults(input("Enter number of adults: ").strip())
+            self.setNumChild(input("Enter number of children: ").strip())
+            self.addReservation()
+        except Exception as e:
+            if str(e) == "NoValue":
+                print("Error: No value provided!")
+            elif str(e) == "Zero":
+                print("Error: Value cannot be zero or less!")
+            elif str(e) == "NonInteger":
+                print("Error: Value must be an integer!")
+            elif str(e) == "DateError":
+                print("Error: Invalid date format")
+            elif str(e) == "InvalidTime":
+                print("Error: Invalid time format")
+            elif str(e) == "Negative":
+                print("Error: Value is less than zero")
+            elif str(e) == "SpecialChar":
+                print("Error: Special character is invalid")
+            else:
+                print(f"An unexpected error occurred: {e}")
+            return
+
     def tabulateView(self, reserveList, type):
         self.tableHeading(type)
         table = Texttable()

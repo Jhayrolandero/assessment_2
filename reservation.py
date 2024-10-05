@@ -99,6 +99,7 @@ Grand Total: PHP {(numAdult*500) + (numChild*300)}
         """
         )
 
+    # Init to populate the array
     def readReservation(self):
         f = open("reservation.txt", "r")
         for idx, x in enumerate(f):
@@ -119,6 +120,7 @@ Grand Total: PHP {(numAdult*500) + (numChild*300)}
             
         f.close()
 
+    # Write to the text file 
     def saveReservation(self):
         f = open("reservation.txt", "w")
 
