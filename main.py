@@ -1,17 +1,13 @@
-from reservation import Reservation
+from option import ReservationOption
 
-reservation = Reservation()
-
+option = ReservationOption()
 
 def main():
     while True:
-        reservation.setName(input("Enter Name: "))
-        reservation.setDate(input("Enter Date: "))
-        reservation.setTime(input("Enter Time: "))
-        reservation.setNumAdults(input("Enter NsetNumAdults: "))
-        reservation.setNumChild(input("Enter NsetNumChild: "))
-        reservation.addReservation()
-        print(reservation.viewReservation())
+        # Display Options
+        option.showOption()
+        # user prompt
+        option.select(input(" "))
     
 if __name__ == '__main__':
     main()
