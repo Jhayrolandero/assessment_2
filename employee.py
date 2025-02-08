@@ -40,7 +40,7 @@ class Employee:
         self.salary = salary
 
     def getEmployee(self):
-        print(self.employeeList)
+        # print(self.employeeList)
         return self.employeeList
 
     def fetchEmployeeNumber(self):
@@ -56,7 +56,7 @@ class Employee:
 
     def incrementEmployeeNumber(self):
 
-        print(type(int(self.id)))
+        # print(type(int(self.id)))
         new_id = int(self.id) + 1
 
         with open("number.txt", "w") as f:
@@ -112,7 +112,7 @@ class Employee:
         newData = {"id": currentId, "name": self.name,
                    "position": self.position, "salary": self.salary}
 
-        print(newData)
+        # print(newData)
         self.employeeList.append(newData)
 
         self.saveEmployee()
@@ -122,14 +122,15 @@ class Employee:
         employee = [
             item for item in self.employeeList if str(item.get('id')).strip() == id]
 
-        print(employee[0])
-        return employee[0]
+        # print(employee[0])
+        
+        return employee[0] if len(employee) > 0 else -1
 
     def sortEmployee(self, by):
-        match by:
+        match by.lower():
             case "name":
                 self.employeeList = sorted(
-                    self.employeeList, key=lambda x: x['name'])
+                    self.employeeList, key=lambda x: x['name'].lower())
             case "salary":
                 self.employeeList = sorted(
                     self.employeeList, key=lambda x: x['salary'])

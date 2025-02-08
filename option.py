@@ -8,7 +8,7 @@ class EmployeeOption(Employee):
     def showOption(self):
         print("""
         EMPLOYEE LIST
-""")
+        """)
         print("System Menu")
         print("a. View All Employee")
         print("b. Make Employee")
@@ -20,19 +20,21 @@ class EmployeeOption(Employee):
         print("g. Exit")
 
     def select(self, user_input):
-        match user_input:
+        match user_input.lower():
             case "a":
                 self.tabulateView(self.getEmployee())
             case "b":
                 self.userPrompt()
             case "c":
+                self.tabulateView(self.getEmployee())
                 self.deleteOption(
-                    input("Enter the number of employee to delete: "))
+                    input("Enter the ID of employee to delete: "))
             case "d":
                 self.editEmployee()
             case "e":
-                self.tabulateView(self.sortTable(input("Sort by: ")))
+                self.tabulateView(self.sortTable(input("Sort by(ID/Name): ")))
             case "f":
+                self.tabulateView(self.getEmployee())
                 self.searchForEmployee(
                     input("Enter the ID of employee: "))
             case "h":
@@ -141,8 +143,15 @@ class EmployeeOption(Employee):
 
     def searchForEmployee(self, number):
         data = self.searchEmployee(number)
+        
+        if(data == -1):
+            print("Employee not found!")
+            return
+        
         print("""
+        ====================
         EMPLOYEE INFORMATION
+        ====================
         """)
 
         print(f"ID: ", data["id"])
@@ -150,19 +159,3 @@ class EmployeeOption(Employee):
         print(f"Position: ", data["position"])
         print(f"Salary: ", data["salary"])
 
-#     def tableHeading(self, type):
-#         match type:
-#             case "list":
-#                 print("""
-#  ___ ___  __  ___ ___  _   _   __ _____ _  __  __  _   _   _   __ _____
-# | _ \ __/' _/| __| _ \| \ / | /  \_   _| |/__\|  \| | | | | |/' _/_   _|
-# | v / _|`._`.| _|| v /`\ V /'| /\ || | | | \/ | | ' | | |_| |`._`. | |
-# |_|_\___|___/|___|_|_\  \_/  |_||_||_| |_|\__/|_|\__| |___|_||___/ |_|
-# """)
-#             case "report":
-#                 print("""
-#  ___ ___  __  ___ ___  _   _   __ _____ _  __  __  _   ___ ___ ___  __  ___ _____
-# | _ \ __/' _/| __| _ \| \ / | /  \_   _| |/__\|  \| | | _ \ __| _,\/__\| _ \_   _|
-# | v / _|`._`.| _|| v /`\ V /'| /\ || | | | \/ | | ' | | v / _|| v_/ \/ | v / | |
-# |_|_\___|___/|___|_|_\  \_/  |_||_||_| |_|\__/|_|\__| |_|_\___|_|  \__/|_|_\ |_|
-#                       """)
