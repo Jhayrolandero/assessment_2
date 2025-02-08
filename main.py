@@ -1,6 +1,7 @@
-from option import ReservationOption
+from option import EmployeeOption
 
-option = ReservationOption()
+option = EmployeeOption()
+
 
 def main():
     while True:
@@ -8,8 +9,7 @@ def main():
         option.showOption()
         # user prompt
         option.select(input(" "))
-    
+
+
 if __name__ == '__main__':
     main()
-
-    

@@ -1,3 +1,0 @@
-name,date,time,adults,children
-LeBron James,10-24-2003,10:45 pm,1,0
-John Doe,10-24-5044,12:00 pm,3,3
